@@ -1,0 +1,14 @@
+.navigation {
+    background-image: url("../../images/button.svg");
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius:  10px;
+    background-color: rgba(56,164,58,1);
+    cursor: pointer;
+}
+
+.navigation:hover {
+    opacity: .8;
+    transition: .5s linear;
+}

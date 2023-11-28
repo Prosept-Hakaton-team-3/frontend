@@ -1,0 +1,19 @@
+.header {
+    width: 1140px;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-bottom: 1px solid rgb(87, 121, 32);
+}
+
+.header__logo {
+    width: 140px;
+    height: 88px;
+}
+
+.header__logo:hover {
+    opacity: .8;
+    transition: .5s linear;
+}
