@@ -1,7 +1,7 @@
 import './Navigation.css'
 
-export function Navigation() {
+export function Navigation(props) {
     return (
-        <button className="navigation"></button>
+        <button className="navigation" type="button" onClick={props.onMenu}></button>
     )
 }
