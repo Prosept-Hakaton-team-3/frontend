@@ -75,35 +75,6 @@
     padding-top: 28px;
 }
 
-.menupopup__savedmovies-link {
-    color: #FFF;
-    text-align: center;
-    font-feature-settings: 'clig' off, 'liga' off;
-    padding-top: 22px;
-    margin-bottom: 60.5vh;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    text-decoration: none;
-}
-
-.menupopup__profile-link {
-    color: #FFF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 16px; /* 114.286% */
-    text-decoration: none;
-    width: 100px;
-    height: 32px;
-    background-color: #313131;
-    border-radius: 20px;
-}
-
 .menupopup__close-button:hover {
     opacity: .8;
     transition: .5s linear;
