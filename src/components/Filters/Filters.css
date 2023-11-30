@@ -1,0 +1,8 @@
+.filters {
+    width: 1140px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgb(87, 121, 32);
+}

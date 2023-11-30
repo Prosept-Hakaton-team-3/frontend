@@ -1,6 +1,6 @@
 .searchform {
     max-width: 1140px;
-    padding-top: 30px;
+    padding: 20px 0 20px;
     margin: 0 auto;
     border-bottom: 1px solid #424242;
     display: flex;

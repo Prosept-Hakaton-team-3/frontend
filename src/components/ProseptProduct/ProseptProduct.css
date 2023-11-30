@@ -1,0 +1,13 @@
+.prosept-product {
+    background-color: rgb(197, 241, 152);
+    border-radius: 10px;
+    width: 97%;
+    display: flex;
+    justify-content: space-around;
+    border: solid 1px black;
+    margin: 2px 0;
+}
+
+.prosept-product__field {
+    width: 50px
+}
