@@ -12,7 +12,6 @@ export function ProseptProductContainer({productsList}) {
     }, [productsList])
     const location = useLocation();
 
-    
     return (
         <section className={`prosept-product-container ${(location.pathname === 'marking') && 'prosept-product-container_marking'}`}>
             {renderProductsList.map(product => (

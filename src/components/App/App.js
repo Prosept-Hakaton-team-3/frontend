@@ -6,15 +6,24 @@ import { Main } from '../Main/Main';
 import { Marking } from '../Marking/Marking';
 import { Footer } from '../Footer/Footer';
 import { MenuPopup } from '../MenuPopup/MenuPopup'
+import { DillerProductPopup } from '../DillerProductPopup/DillerProductPopup';
 
 function App() {
   const [isMenuPopupOpen, showMenuPopup] = React.useState(false);
+  const [selectedCard, showSelectedCard] = React.useState(null);
   function handleMenuClick() {
     showMenuPopup(true);
   }
   function closePopup() {
     showMenuPopup(false)
+    showSelectedCard(null)
   }
+  
+
+    function handleCardClick(product) {
+        showSelectedCard(product);
+        console.log(product)
+    }
   return (
     <div className="app">
       <Routes>
@@ -35,7 +44,7 @@ function App() {
         element = {
           <>
             <Header onMenu={handleMenuClick}/>
-            <Marking />
+            <Marking onCardClick={handleCardClick}/>
             <Footer />
           </>
         }
@@ -43,9 +52,13 @@ function App() {
       </Routes>
 
       <MenuPopup
-          isOpen={isMenuPopupOpen}
-          onClose={closePopup}
+        isOpen={isMenuPopupOpen}
+        onClose={closePopup}
       />
+      <DillerProductPopup
+        product={selectedCard}
+        onClose={closePopup}
+       />
     </div>
   );
 }

@@ -1,0 +1,44 @@
+.diller-product-popup {
+    display: flex;
+    visibility: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
+.diller-product-popup_opened {
+    visibility: visible;
+}
+
+.diller-product-popup__overlay {
+    width: 100%;
+    min-height: 150%;
+    position: fixed;
+    content: '';
+    top: 0;
+    left: 0;
+    opacity: .5;
+    background: #000000;
+    z-index: 1;
+}
+
+.diller-product-popup__wrap {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    padding: 5px 10px;
+    top: 0;
+    left: 0;
+    margin: calc(10vh) calc(50vw - 215px);
+    width: 430px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    z-index: 2;
+}
+
+.diller-product-popup__field {
+    margin: 0;
+    padding: 5px 0;
+}
