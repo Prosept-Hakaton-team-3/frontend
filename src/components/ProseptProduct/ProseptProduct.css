@@ -4,10 +4,24 @@
     width: 97%;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     border: solid 1px black;
     margin: 2px 0;
+    min-height: 50px;
 }
 
-.prosept-product__field {
-    width: 50px
+.prosept-product__view-button {
+    background-image: url(../../images/view.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0);
+    cursor: pointer;
+    width: 50px;
+    height: 30px;
+    border: none;
+}
+
+.prosept-product__view-button:hover {
+    opacity: .8;
+    transition: .5s linear;
 }

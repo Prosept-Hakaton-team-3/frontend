@@ -6,7 +6,7 @@ import { Navigation } from '../Navigation/Navigation';
 export function Header(props) {
     return (
         <header className="header">
-            <Link to="/"><img className="header__logo" src={logo} alt="Логотип"/> </Link>
+            <Link to="/" title="На главную"><img className="header__logo" src={logo} alt="Логотип"/> </Link>
             <Navigation onMenu={props.onMenu}/>
         </header>
     )

@@ -1,27 +1,33 @@
 import './ProseptProductContainer.css'
-import { ProseptProduct } from '../ProseptProduct/ProseptProduct'
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { ProseptProduct } from '../ProseptProduct/ProseptProduct'
 
-export function ProseptProductContainer({productsList}) {
+export function ProseptProductContainer(props) {
     const [renderProductsList, setRenderProductsList] = useState([])
     useEffect(() => {
-        if(productsList.length) {
-            setRenderProductsList(productsList)
+        if(props.productsList.length) {
+            setRenderProductsList(props.productsList)
         }
-    }, [productsList])
-    const location = useLocation();
+    }, [props.productsList])
 
     return (
-        <section className={`prosept-product-container ${(location.pathname === 'marking') && 'prosept-product-container_marking'}`}>
-            {renderProductsList.map(product => (
+        <form className="prosept-product-container">
+            {renderProductsList.map((product, index) => (
                 <ProseptProduct
+                    key={index}
+                    product={product}
                     name={product.name}
                     vendorCode={product.vendorCode}
                     status={product.status}
+                    onCardClick={props.onCardClick}
                 />
             ))
-            }
-        </section>
+            } 
+            <div className="prosept-product-container__buttons">
+                <button className="prosept-product-container__button">Да</button>
+                <button className="prosept-product-container__button">Нет</button>
+                <button className="prosept-product-container__button">Отложить</button>
+            </div>  
+        </form>
     )
 }

@@ -1,5 +1,5 @@
 import './Main.css'
-import { ProseptProductContainer } from '../ProseptProductContainer/ProseptProductContainer'
+import { DillerProductContainer } from '../DillerProductContainer/DillerProductContainer'
 import { Filters } from '../Filters/Filters'
 
 const productsList = [
@@ -90,7 +90,7 @@ export function Main() {
     return (
         <main className="main">
             <Filters />
-            <ProseptProductContainer productsList={productsList}/>
+            <DillerProductContainer productsList={productsList}/>
         </main>
     )
 }

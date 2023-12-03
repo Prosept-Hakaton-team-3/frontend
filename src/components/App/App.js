@@ -6,7 +6,7 @@ import { Main } from '../Main/Main';
 import { Marking } from '../Marking/Marking';
 import { Footer } from '../Footer/Footer';
 import { MenuPopup } from '../MenuPopup/MenuPopup'
-import { DillerProductPopup } from '../DillerProductPopup/DillerProductPopup';
+import { ProseptProductPopup } from '../ProseptProductPopup/ProseptProductPopup';
 
 function App() {
   const [isMenuPopupOpen, showMenuPopup] = React.useState(false);
@@ -14,16 +14,16 @@ function App() {
   function handleMenuClick() {
     showMenuPopup(true);
   }
+
   function closePopup() {
     showMenuPopup(false)
     showSelectedCard(null)
   }
   
-
-    function handleCardClick(product) {
-        showSelectedCard(product);
-        console.log(product)
-    }
+  function handleCardClick(product) {
+      showSelectedCard(product);
+      console.log(product)
+  }
   return (
     <div className="app">
       <Routes>
@@ -55,7 +55,7 @@ function App() {
         isOpen={isMenuPopupOpen}
         onClose={closePopup}
       />
-      <DillerProductPopup
+      <ProseptProductPopup
         product={selectedCard}
         onClose={closePopup}
        />

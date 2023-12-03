@@ -1,15 +1,15 @@
-.diller-product-popup {
+.prosept-product-popup {
     display: flex;
     visibility: hidden;
     align-items: center;
     justify-content: center;
 }
 
-.diller-product-popup_opened {
+.prosept-product-popup_opened {
     visibility: visible;
 }
 
-.diller-product-popup__overlay {
+.prosept-product-popup__overlay {
     width: 100%;
     min-height: 150%;
     position: fixed;
@@ -21,12 +21,12 @@
     z-index: 1;
 }
 
-.diller-product-popup__wrap {
+.prosept-product-popup__wrap {
     position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: start;
+    align-items: flex-start;
     padding: 5px 10px;
     top: 0;
     left: 0;
@@ -38,7 +38,7 @@
     z-index: 2;
 }
 
-.diller-product-popup__field {
+.prosept-product-popup__field {
     margin: 0;
     padding: 5px 0;
 }
