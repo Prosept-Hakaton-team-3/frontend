@@ -1,16 +1,7 @@
 import './Marking.css'
 import React from "react";
-import { SearchForm } from '../SearchForm/SearchForm'
 import { ProseptProductContainer } from '../ProseptProductContainer/ProseptProductContainer'
 import { DillerProductContainer } from '../DillerProductContainer/DillerProductContainer'
-
-const productsListDiller = [
-    {
-        name: "auto",
-        vendorCode: 1,
-        status: "Неопределен"
-    }
-]
 
 const productsList = [
     {
@@ -41,12 +32,15 @@ const productsList = [
 ]
 
 export function Marking(props) {
-    
     return (
         <section className="marking">
-            <SearchForm />
-            <DillerProductContainer productsList={productsListDiller}/>
-            <ProseptProductContainer productsList={productsList} onCardClick={props.onCardClick}/>
+            <DillerProductContainer 
+            productsList={props.dillerProductList}
+            />
+            <ProseptProductContainer
+            productsList={productsList} 
+            onCardClick={props.onCardClick}
+            />
         </section>
     )
 }

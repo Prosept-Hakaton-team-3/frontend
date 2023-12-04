@@ -12,6 +12,7 @@ export function ProseptProductContainer(props) {
 
     return (
         <form className="prosept-product-container">
+            <div className="prosept-product-container__wrap">
             {renderProductsList.map((product, index) => (
                 <ProseptProduct
                     key={index}
@@ -23,10 +24,12 @@ export function ProseptProductContainer(props) {
                 />
             ))
             } 
+            </div>
             <div className="prosept-product-container__buttons">
-                <button className="prosept-product-container__button">Да</button>
-                <button className="prosept-product-container__button">Нет</button>
-                <button className="prosept-product-container__button">Отложить</button>
+                <button className="prosept-product-container__button">Подходит</button>
+                <button className="prosept-product-container__button">Разметить вручную</button>
+                <button className="prosept-product-container__button">Отложить (удалить товар)</button>
+                <button className="prosept-product-container__button">Перейти к следующему товару</button>
             </div>  
         </form>
     )

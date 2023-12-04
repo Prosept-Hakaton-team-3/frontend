@@ -21,3 +21,28 @@
 .diller-product__value {
     color: black;
 }
+
+.diller-product__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.diller-product__form_marking {
+    display: none;
+}
+
+.diller-product__input {
+    width: 40px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.diller-product__submit-button {
+    background-image: url(../../images/find.svg);
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+    border: none;
+}

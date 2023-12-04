@@ -86,11 +86,14 @@ const productsList = [
 
 ]
 
-export function Main() {
+export function Main(props) {
     return (
         <main className="main">
             <Filters />
-            <DillerProductContainer productsList={productsList}/>
+            <DillerProductContainer 
+            dillerProductList={productsList}
+            onMark={props.onMark}
+            />
         </main>
     )
 }

@@ -1,6 +1,12 @@
 import './DillerProduct.css'
+import { useLocation } from 'react-router-dom';
 
 export function DillerProduct(props) {
+    function handleMark(evt) {
+        evt.preventDefault();
+        props.onMark(props.product)
+    }
+    const location = useLocation();
     return (
         <div className="diller-product">
             <div className="diller-product__field">
@@ -19,6 +25,10 @@ export function DillerProduct(props) {
                 <p className="diller-product__key">Сопоставленный товар:</p>
                 <p className="diller-product__value">{props.twin}</p>
             </div>
+            <form className={`diller-product__form ${(location.pathname === '/marking') && "diller-product__form_marking"}`}>
+                <input className="diller-product__input" type="number" required min={1} max={50} title="Количество отображаемых вариантов соответсвия"/>
+                <button className="diller-product__submit-button" type="submit" onClick={handleMark} title="Перейти к разметке"></button>
+            </form>
         </div>
     )
 }

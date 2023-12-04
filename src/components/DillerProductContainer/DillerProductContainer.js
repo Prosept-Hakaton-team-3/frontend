@@ -3,26 +3,32 @@ import { DillerProduct } from '../DillerProduct/DillerProduct'
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-export function DillerProductContainer({productsList}) {
+export function DillerProductContainer(props) {
     const [renderProductsList, setRenderProductsList] = useState([])
     useEffect(() => {
-        if(productsList.length) {
-            setRenderProductsList(productsList)
+        if(props.dillerProductList) {
+            setRenderProductsList(props.dillerProductList)
         }
-    }, [productsList])
+    }, [props.dillerProductList])
     const location = useLocation();
 
     return (
-        <section className={`diller-product-container ${(location.pathname === 'marking') && 'diller-product-container_marking'}`}>
-            {renderProductsList.map((product, index) => (
+        <section className={`diller-product-container ${(location.pathname === '/marking') && 'diller-product-container_marking'}`}>
+           {renderProductsList.map((product, index) => (
                 <DillerProduct
                     key={index}
+                    product={product}
                     name={product.name}
                     vendorCode={product.vendorCode}
                     status={product.status}
+                    onMark={props.onMark}
                 />
-            ))
-            }
+            ))}
+            {(location.pathname === '/marking') && <DillerProduct
+            name={props?.productsList?.name}
+            vendorCode={props?.productsList?.vendorCode}
+            status={props?.productsList?.status}
+            />}
         </section>
     )
 }
