@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom'
-import './MenuPopup.css'
+import { Link } from "react-router-dom";
+import "./MenuPopup.css";
+import React from "react";
 
-export function MenuPopup(props) {
-    return (
+export function MenuPopup (props) {
+  return (
         <div className={`menupopup ${
             props.isOpen ? "menupopup_opened" : ""
           }`}>
@@ -15,5 +16,5 @@ export function MenuPopup(props) {
             <Link className="menupopup__main-link" to="/">Главная</Link>
             <Link className="menupopup__marking-link" to="/marking">Режим разметки</Link>
         </div>
-    )
+  );
 }

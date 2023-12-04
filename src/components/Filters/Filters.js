@@ -1,7 +1,7 @@
-import './Filters.css'
-
-export function Filters() {
-    return (
+import "./Filters.css";
+import React from "react";
+export function Filters () {
+  return (
         <form className="filters">
             <div className="filters__wrap">
                 <label className="filters__label" htmlFor="diller-select">Продавец</label>
@@ -35,5 +35,5 @@ export function Filters() {
             </div>
             <button className="filters__submit-button" type="submit">Применить</button>
         </form>
-    )
+  );
 }
