@@ -1,7 +1,8 @@
-import './ProseptProductPopup.css'
+import "./ProseptProductPopup.css";
+import React from "react";
 
-export function ProseptProductPopup(props) {
-    return (
+export function ProseptProductPopup (props) {
+  return (
         <div className={`prosept-product-popup ${props.product ? "prosept-product-popup_opened" : ""}`}>
             <div className="prosept-product-popup__overlay" onClick={props.onClose}></div>
             <div className="prosept-product-popup__wrap">
@@ -25,5 +26,5 @@ export function ProseptProductPopup(props) {
                 onClick={props.onClose}
             ></button>
         </div>
-    )
+  );
 }

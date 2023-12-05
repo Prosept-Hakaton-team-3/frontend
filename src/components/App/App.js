@@ -1,36 +1,36 @@
-import './App.css';
-import {useState} from "react";
-import { Routes, Route, useNavigate} from "react-router-dom";
-import { Header } from '../Header/Header';
-import { Main } from '../Main/Main';
-import { Marking } from '../Marking/Marking';
-import { Statistics } from '../Statistics/Statistics';
-import { Footer } from '../Footer/Footer';
-import { MenuPopup } from '../MenuPopup/MenuPopup';
-import { ProseptProductPopup } from '../ProseptProductPopup/ProseptProductPopup';
+import "./App.css";
+import React, { useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { Header } from "../Header/Header";
+import { Main } from "../Main/Main";
+import { Marking } from "../Marking/Marking";
+import { Statistics } from "../Statistics/Statistics";
+import { Footer } from "../Footer/Footer";
+import { MenuPopup } from "../MenuPopup/MenuPopup";
+import { ProseptProductPopup } from "../ProseptProductPopup/ProseptProductPopup";
 
-function App() {
+function App () {
   const [isMenuPopupOpen, showMenuPopup] = useState(false);
   const [selectedCard, showSelectedCard] = useState(null);
   const [dillerProduct, setDillerProduct] = useState(null);
   const navigate = useNavigate();
 
-  function handleMenuClick() {
+  function handleMenuClick () {
     showMenuPopup(true);
   }
 
-  function closePopup() {
-    showMenuPopup(false)
-    showSelectedCard(null)
+  function closePopup () {
+    showMenuPopup(false);
+    showSelectedCard(null);
   }
-  
-  function handleCardClick(product) {
+
+  function handleCardClick (product) {
     showSelectedCard(product);
   }
 
-  function handleMark(product) {
-    setDillerProduct(product)
-    navigate('/marking')
+  function handleMark (product) {
+    setDillerProduct(product);
+    navigate("/marking");
   }
   return (
     <div className="app">
@@ -52,7 +52,7 @@ function App() {
         element = {
           <>
             <Header onMenu={handleMenuClick}/>
-            <Marking 
+            <Marking
               onCardClick={handleCardClick}
               dillerProductList={dillerProduct}
             />

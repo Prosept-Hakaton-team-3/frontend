@@ -1,7 +1,8 @@
-import './Statistics.css'
+import React from "react";
+import "./Statistics.css";
 
-export function Statistics() {
-    return (
+export function Statistics () {
+  return (
         <section className="statistics">
             <h1 className="statistics__header">Статистика</h1>
             <article className="statistics__wrap">
@@ -22,5 +23,5 @@ export function Statistics() {
                 </article>
             </article>
         </section>
-    )
+  );
 }
