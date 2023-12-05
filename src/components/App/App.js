@@ -1,12 +1,13 @@
-import "./App.css";
-import React, { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import { Header } from "../Header/Header";
-import { Main } from "../Main/Main";
-import { Marking } from "../Marking/Marking";
-import { Footer } from "../Footer/Footer";
-import { MenuPopup } from "../MenuPopup/MenuPopup";
-import { ProseptProductPopup } from "../ProseptProductPopup/ProseptProductPopup";
+import './App.css';
+import {useState} from "react";
+import { Routes, Route, useNavigate} from "react-router-dom";
+import { Header } from '../Header/Header';
+import { Main } from '../Main/Main';
+import { Marking } from '../Marking/Marking';
+import { Statistics } from '../Statistics/Statistics';
+import { Footer } from '../Footer/Footer';
+import { MenuPopup } from '../MenuPopup/MenuPopup';
+import { ProseptProductPopup } from '../ProseptProductPopup/ProseptProductPopup';
 
 function App () {
   const [isMenuPopupOpen, showMenuPopup] = useState(false);
@@ -55,6 +56,17 @@ function App () {
               onCardClick={handleCardClick}
               dillerProductList={dillerProduct}
             />
+            <Footer />
+          </>
+        }
+        />
+        <Route
+        exact
+        path="/statistics"
+        element = {
+          <>
+            <Header onMenu={handleMenuClick}/>
+            <Statistics />
             <Footer />
           </>
         }

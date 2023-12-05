@@ -47,20 +47,7 @@
     right: 22px;
 }
 
-.menupopup__main-link {
-    text-decoration: none;
-    color: #FFF;
-    text-align: center;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    padding-top: 159px;
-    margin: 0;
-}
-
-.menupopup__marking-link {
+.menupopup__link {
     margin: 0;
     color: #FFF;
     text-align: center;
@@ -70,10 +57,14 @@
     font-weight: 500;
     line-height: normal;
     text-decoration: none;
-    border-bottom: 1px solid #FFFFFF;
     padding-bottom: 4px;
     padding-top: 28px;
 }
+
+.menupopup__link_page_main {
+    margin-top: 159px;
+}
+
 
 .menupopup__close-button:hover {
     opacity: .8;
@@ -83,39 +74,8 @@
     opacity: .8;
     transition: .5s linear;
 }
-.menupopup__marking-link:hover {
-    opacity: .8;
-    transition: .5s linear;
-}
-.menupopup__savedmovies-link:hover {
-    opacity: .8;
-    transition: .5s linear;
-}
-.menupopup__movies-link:hover {
+.menupopup__other-link:hover {
     opacity: .8;
     transition: .5s linear;
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
-    .menupopup {
-        width: 100%;
-    }
-
-    .menupopup__main-link {
-        padding-top: 144px;
-    }
-
-    .menupopup__movies-link {
-        padding-top: 24px;
-    }
-
-    .menupopup__savedmovies-link {
-        padding-top: 21px;
-        margin-bottom: 37vh;
-    }
-
-    .menupopup__close-button {
-        top: 17px;
-        right: 17px;
-    }
-}

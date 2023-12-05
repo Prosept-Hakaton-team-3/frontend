@@ -13,8 +13,9 @@ export function MenuPopup (props) {
                 className="menupopup__close-button"
                 onClick={props.onClose}
             ></button>
-            <Link className="menupopup__main-link" to="/">Главная</Link>
-            <Link className="menupopup__marking-link" to="/marking">Режим разметки</Link>
+            <Link className="menupopup__link menupopup__link_page_main" to="/">Главная</Link>
+            <Link className="menupopup__link" to="/marking">Режим разметки</Link>
+            <Link className="menupopup__link" to="/statistics">Статистика</Link>
         </div>
   );
 }
