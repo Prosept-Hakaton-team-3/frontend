@@ -18,7 +18,7 @@ export function DillerProductContainer (props) {
                 <DillerProduct
                     key={index}
                     product={product}
-                    name={product.name}
+name={product.name}
                     vendorCode={product.vendorCode}
                     status={product.status}
                     onMark={props.onMark}

@@ -32,6 +32,7 @@ const productsList = [
 ];
 
 export function Marking (props) {
+
   return (
         <section className="marking">
             <DillerProductContainer
