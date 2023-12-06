@@ -11,23 +11,23 @@ export function DillerProductContainer (props) {
     }
   }, [props.dillerProductList]);
   const location = useLocation();
-
+console.log(props.dillerProductList);
   return (
         <section className={`diller-product-container ${(location.pathname === "/marking") && "diller-product-container_marking"}`}>
-           {renderProductsList.map((product, index) => (
+           {renderProductsList.map((product) => (
                 <DillerProduct
-                    key={index}
-                    product={product}
-name={product.name}
+                    key={product.id}
+                    name={product.name}
+                    date={product.date}
                     vendorCode={product.vendorCode}
                     status={product.status}
                     onMark={props.onMark}
                 />
            ))}
             {(location.pathname === "/marking") && <DillerProduct
-            name={props?.productsList?.name}
-            vendorCode={props?.productsList?.vendorCode}
-            status={props?.productsList?.status}
+            name={props?.dillerProductList?.name}
+            vendorCode={props?.dillerProductList?.vendorCode}
+            status={props?.dillerProductList?.status}
             />}
         </section>
   );

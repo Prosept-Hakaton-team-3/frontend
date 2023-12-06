@@ -54,7 +54,7 @@ function App () {
       navigate("/marking");
   }
 
-
+  console.log(dillerProduct);
   return (
     <Context.Provider value={null}>
     <div className="app">
@@ -65,7 +65,9 @@ function App () {
         element = {
           <>
             <Header onMenu={handleMenuClick}/>
-            <Main onMark={handleMark}/>
+            <Main onMark={handleMark}
+                  dillerProduct={dillerProduct}
+            />
             <Footer />
           </>
         }
@@ -78,7 +80,7 @@ function App () {
             <Header onMenu={handleMenuClick}/>
             <Marking
               onCardClick={handleCardClick}
-              dillerProductList={dillerProduct}
+              dillerProduct={dillerProduct}
             />
             <Footer />
           </>

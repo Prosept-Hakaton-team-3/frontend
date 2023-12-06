@@ -32,11 +32,11 @@ const productsList = [
 ];
 
 export function Marking (props) {
-
+  console.log(props.dillerProductList);
   return (
         <section className="marking">
             <DillerProductContainer
-            productsList={props.dillerProductList}
+            dillerProductList={props.dillerProduct}
             />
             <ProseptProductContainer
             productsList={productsList}
