@@ -11,7 +11,7 @@ class Api {
     }
     return Promise.reject(new Error(`Ошибка ${res.status}`));
   }
-
+//
   postMatches ({ product_id, dealer_id, key }) {
     return fetch(`${this.address}/matches`, {
       method: "POST",
@@ -20,38 +20,6 @@ class Api {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({ product_id, dealer_id, key })
-    })
-      .then(this._checkResponse);
-  }
-
-  putMatches ({ product_id, dealer_id, key, id }) {
-    return fetch(`${this.address}/matches/${id}`, {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ product_id, dealer_id, key, id })
-    })
-      .then(this._checkResponse);
-  }
-
-  putchMatches ({ product_id, dealer_id, key, id }) {
-    return fetch(`${this.address}/matches/${id}`, {
-      method: "PUTCH",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ product_id, dealer_id, key, id })
-    })
-      .then(this._checkResponse);
-  }
-
-  deleteMatches ({ id }) {
-    return fetch(`${this.address}/matches/${id}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" }
     })
       .then(this._checkResponse);
   }

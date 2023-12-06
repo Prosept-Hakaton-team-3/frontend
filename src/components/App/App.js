@@ -33,6 +33,13 @@ function App () {
       .catch(err=> err);
   },[]);
 
+  useEffect(()=>{
+    api.getOwnProducts()
+      .then((data)=> {
+        console.log(data);
+      });
+  });
+
 
 
 
