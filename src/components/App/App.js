@@ -15,6 +15,7 @@ function App () {
   const [isMenuPopupOpen, showMenuPopup] = useState(false);
   const [selectedCard, showSelectedCard] = useState(null);
   const [dillerProduct, setDillerProduct] = useState(null);
+  const [dillerProductForMatch, setDillerProductForMatch] = useState(null);
   const [proseptProduct, setProseptProduct] = useState(null);
   const navigate = useNavigate();
 
@@ -93,7 +94,7 @@ function App () {
   }
 
   function handleMark (product) {
-    setDillerProduct(product);
+    setDillerProductForMatch(product);
     api.getRecommendedProducts(product.id)
       .then((data)=> {
         setProseptProduct(data.map((item)=>({
@@ -117,6 +118,64 @@ function App () {
 
   function handleConfirmMatch () {
 
+  }
+
+  function handleGoNext () {
+    api.getProductsId(dillerProductForMatch.id+1)
+    .then((item)=>{
+      setDillerProductForMatch({
+      product: item,
+      date: item.date,
+      dealer: item.dealer.name,
+      dealer_id: item.dealer.id,
+      id: item.id,
+      key: item.product_key,
+      name: item.product_name,
+      price: item.price,
+      url: item.product_url,
+    });
+    })
+    .catch(err=> err);
+    api.getRecommendedProducts(dillerProductForMatch.id+1)
+      .then((data)=> {
+        setProseptProduct(data.map((item)=>({
+          product: item,
+          article: item.article,
+          name: item.name,
+          ean_13: item.ean_13,
+          ozon_name: item.ozon_name,
+          name_1c: item.name_1c,
+          wb_name: item.wb_name,
+          ozon_article: item.ozon_article,
+          wb_article: item.wb_article,
+          ym_article: item.ym_article,
+          cost: item.cost,
+          recommended_price: item.recommended_price
+        })));
+      })
+      .catch(err=> err);
+  }
+
+  function handleDeleteProduct () {
+    api.deleteProductsId(dillerProductForMatch.id)
+    .then((res) => res)
+    .catch(err => err);
+    handleGoNext();
+    api.getProducts()
+    .then((data)=>{
+      setDillerProduct(data.results.map((item)=>({
+      product: item,
+      date: item.date,
+      dealer: item.dealer.name,
+      dealer_id: item.dealer.id,
+      id: item.id,
+      key: item.product_key,
+      name: item.product_name,
+      price: item.price,
+      url: item.product_url,
+    })));
+    })
+    .catch(err=> err);
   }
 
   return (
@@ -144,10 +203,12 @@ function App () {
             <Header onMenu={handleMenuClick}/>
             <Marking
               onCardClick={handleCardClick}
-              dillerProduct={dillerProduct}
+              dillerProduct={dillerProductForMatch}
               productsList={proseptProduct}
               onShowAllProducts={handleShowAllProducts}
               onConfirm={handleConfirmMatch}
+              onNext={handleGoNext}
+              onDelete={handleDeleteProduct}
             />
             <Footer />
           </>

@@ -42,6 +42,8 @@ export function Marking (props) {
             onCardClick={props.onCardClick}
             onShowAllProducts={props.onShowAllProducts}
             onConfirm={props.onConfirm}
+            onNext={props.onNext}
+            onDelete={props.onDelete}
             />
         </section>
   );

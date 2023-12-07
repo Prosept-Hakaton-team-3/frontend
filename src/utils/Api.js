@@ -51,7 +51,7 @@ class Api {
       .then(this._checkResponse);
   }
 
-  getProductsId ({ id }) {
+  getProductsId (id) {
     return fetch(`${this.address}/products/${id}`, {
       headers: {
         "Content-Type": "application/json"
@@ -60,7 +60,7 @@ class Api {
       .then(this._checkResponse);
   }
 
-  deleteProductsId ({ id }) {
+  deleteProductsId (id) {
     return fetch(`${this.address}/products/${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" }
