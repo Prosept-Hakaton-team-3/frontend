@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "./MenuPopup.css";
 import React from "react";
 
@@ -13,9 +12,9 @@ export function MenuPopup (props) {
                 className="menupopup__close-button"
                 onClick={props.onClose}
             ></button>
-            <Link className="menupopup__link menupopup__link_page_main" to="/">Главная</Link>
-            <Link className="menupopup__link" to="/marking">Режим разметки</Link>
-            <Link className="menupopup__link" to="/statistics">Статистика</Link>
+            <a className="menupopup__link menupopup__link_page_main" href="/">Главная</a>
+            <a className="menupopup__link" href="/marking">Режим разметки</a>
+            <a className="menupopup__link" href="/statistics">Статистика</a>
         </div>
   );
 }

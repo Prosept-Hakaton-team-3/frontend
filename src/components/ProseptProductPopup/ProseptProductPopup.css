@@ -23,6 +23,7 @@
 
 .prosept-product-popup__wrap {
     position: fixed;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -36,9 +37,23 @@
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
     z-index: 2;
+    overflow-y: auto;
 }
 
 .prosept-product-popup__field {
     margin: 0;
     padding: 5px 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+.prosept-product-popup__key {
+  margin: 0;
+  width: 200px;
+  text-decoration: underline;
+}
+
+.prosept-product-popup__value {
+  margin: 0;
+  width: 200px;
 }

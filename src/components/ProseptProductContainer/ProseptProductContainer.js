@@ -1,24 +1,22 @@
 import "./ProseptProductContainer.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { ProseptProduct } from "../ProseptProduct/ProseptProduct";
 
 export function ProseptProductContainer (props) {
-  const [renderProductsList, setRenderProductsList] = useState([]);
-  useEffect(() => {
-    if (props.productsList.length) {
-      setRenderProductsList(props.productsList);
-    }
-  }, [props.productsList]);
+  function handleShowAllProducts(evt) {
+    evt.preventDefault();
+    props.onShowAllProducts();
+  }
 
   return (
         <form className="prosept-product-container">
             <div className="prosept-product-container__wrap">
-            {renderProductsList.map((product, index) => (
+            {props.productsList && props.productsList.map((product, index) => (
                 <ProseptProduct
                     key={index}
                     product={product}
                     name={product.name}
-                    vendorCode={product.vendorCode}
+                    vendorCode={product?.vendorCode}
                     status={product.status}
                     onCardClick={props.onCardClick}
                 />
@@ -27,7 +25,7 @@ export function ProseptProductContainer (props) {
             </div>
             <div className="prosept-product-container__buttons">
                 <button className="prosept-product-container__button">Подходит</button>
-                <button className="prosept-product-container__button">Разметить вручную</button>
+                <button type="submit" onClick={handleShowAllProducts} className="prosept-product-container__button">Разметить вручную</button>
                 <button className="prosept-product-container__button">Отложить (удалить товар)</button>
                 <button className="prosept-product-container__button">Перейти к следующему товару</button>
             </div>

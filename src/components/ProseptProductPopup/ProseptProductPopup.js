@@ -6,19 +6,58 @@ export function ProseptProductPopup (props) {
         <div className={`prosept-product-popup ${props.product ? "prosept-product-popup_opened" : ""}`}>
             <div className="prosept-product-popup__overlay" onClick={props.onClose}></div>
             <div className="prosept-product-popup__wrap">
-                <p className="prosept-product-popup__field">Артикул товара: {props.product?.name}</p>
-                <p className="prosept-product-popup__field">Код товара: {props.product?.name}</p>
-                <p className="prosept-product-popup__field">Название товара: {props.product?.name}</p>
-                <p className="prosept-product-popup__field">Стоимость: {props.product?.name}</p>
-                <p className="prosept-product-popup__field">Рекомендованная минимальная цена: {props.product?.name}</p>
-                <p className="prosept-product-popup__field">Рекомендованная цена: {props.product?.name}</p>
-                <p className="prosept-product-popup__field">Категория товара: {props.product?.name}</p>
-                <p className="prosept-product-popup__field">Название товара на Озоне: {props.product?.name}</p>
-                <p className="prosept-product-popup__field">Название товара в 1С: {props.product?.name}</p>
-                <p className="prosept-product-popup__field">Названиетовара на Wildberries: {props.product?.name}</p>
-                <p className="prosept-product-popup__field">Описание для Озон: {props.product?.name}</p>
-                <p className="prosept-product-popup__field">Артикул для Wildberries: {props.product?.name}</p>
-                <p className="prosept-product-popup__field">Артикул для Яндекс.Маркета: {props.product?.name}</p>
+                <div className="prosept-product-popup__field">
+                  <p className="prosept-product-popup__key">Артикул товара:</p>
+                  <p className="prosept-product-popup__value">{props.product?.article}</p>
+                </div>
+                {/* <div className="prosept-product-popup__field">
+                  <p className="prosept-product-popup__key">Код товара:</p>
+                  <p className="prosept-product-popup__value">{props.product?.name}</p>
+                </div> */}
+                <div className="prosept-product-popup__field">
+                  <p className="prosept-product-popup__key">Название товара:</p>
+                  <p className="prosept-product-popup__value">{props.product?.name}</p>
+                </div>
+                {/* <div className="prosept-product-popup__field">
+                  <p className="prosept-product-popup__key">Стоимость:</p>
+                  <p className="prosept-product-popup__value">{props.product?.cost}</p>
+                </div> */}
+                {/* <div className="prosept-product-popup__field">
+                  <p className="prosept-product-popup__key">Рекомендованная минимальная цена:</p>
+                  <p className="prosept-product-popup__value">{props.product?.name}</p>
+                </div> */}
+                <div className="prosept-product-popup__field">
+                  <p className="prosept-product-popup__key">Рекомендованная цена:</p>
+                  <p className="prosept-product-popup__value">{props.product?.recommended_price}</p>
+                </div>
+                {/* <div className="prosept-product-popup__field">
+                  <p className="prosept-product-popup__key">Категория товара:</p>
+                  <p className="prosept-product-popup__value">{props.product?.name}</p>
+                </div> */}
+                {/* <div className="prosept-product-popup__field">
+                  <p className="prosept-product-popup__key">Название товара на Озоне:</p>
+                  <p className="prosept-product-popup__value">{props.product?.name}</p>
+                </div> */}
+                <div className="prosept-product-popup__field">
+                  <p className="prosept-product-popup__key">Название товара в 1С:</p>
+                  <p className="prosept-product-popup__value">{props.product?.name_1c}</p>
+                </div>
+                <div className="prosept-product-popup__field">
+                  <p className="prosept-product-popup__key">Названиетовара на Wildberries:</p>
+                  <p className="prosept-product-popup__value">{props.product?.wb_name}</p>
+                </div>
+                {/* <div className="prosept-product-popup__field">
+                  <p className="prosept-product-popup__key">Описание для Озон:</p>
+                  <p className="prosept-product-popup__value">{props.product?.name}</p>
+                </div> */}
+                <div className="prosept-product-popup__field">
+                  <p className="prosept-product-popup__key">Артикул для Wildberries:</p>
+                  <p className="prosept-product-popup__value">{props.product?.wb_article}</p>
+                </div>
+                <div className="prosept-product-popup__field">
+                  <p className="prosept-product-popup__key">Артикул для Яндекс.Маркета:</p>
+                  <p className="prosept-product-popup__value">{props.product?.ym_article}</p>
+                </div>
             </div>
             <button
                 type="button"

@@ -7,7 +7,11 @@
     align-items: center;
     border: solid 1px black;
     margin: 2px 0;
-    min-height: 50px;
+    min-height: 80px;
+}
+
+.prosept-product__field {
+    width: 300px;
 }
 
 .prosept-product__view-button {

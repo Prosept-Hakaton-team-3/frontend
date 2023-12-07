@@ -88,7 +88,6 @@ import React from "react";
 // ];
 
 export function Main (props) {
-  console.log(props.dillerProduct);
   return (
         <main className="main">
             <Filters />

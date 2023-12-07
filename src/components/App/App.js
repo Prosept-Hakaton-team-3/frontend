@@ -15,11 +15,14 @@ function App () {
   const [isMenuPopupOpen, showMenuPopup] = useState(false);
   const [selectedCard, showSelectedCard] = useState(null);
   const [dillerProduct, setDillerProduct] = useState(null);
+  const [proseptProduct, setProseptProduct] = useState(null);
   const navigate = useNavigate();
+
   useEffect(()=> {
     api.getProducts()
       .then((data)=>{
         setDillerProduct(data.results.map((item)=>({
+        product: item,
         date: item.date,
         dealer: item.dealer.name,
         dealer_id: item.dealer.id,
@@ -33,14 +36,26 @@ function App () {
       .catch(err=> err);
   },[]);
 
-  useEffect(()=>{
-    api.getOwnProducts()
-      .then((data)=> {
-        console.log(data);
-      });
-  });
-
-
+  // useEffect(()=>{
+  //   api.getOwnProducts()
+  //     .then((data)=> {
+  //       setProseptProduct(data.results.map((item)=>({
+  //         product: item,
+  //         article: item.article,
+  //         name: item.name,
+  //         ean_13: item.ean_13,
+  //         ozon_name: item.ozon_name,
+  //         name_1c: item.name_1c,
+  //         wb_name: item.wb_name,
+  //         ozon_article: item.ozon_article,
+  //         wb_article: item.wb_article,
+  //         ym_article: item.ym_article,
+  //         cost: item.cost,
+  //         recommended_price: item.recommended_price
+  //       })));
+  //     })
+  //     .catch(err=> err);
+  // },[]);
 
 
   function handleMenuClick () {
@@ -56,12 +71,51 @@ function App () {
     showSelectedCard(product);
   }
 
-  function handleMark (product) {
-    setDillerProduct(product);
-      navigate("/marking");
+  function handleShowAllProducts() {
+    api.getOwnProducts()
+        .then((data)=> {
+          setProseptProduct(data.results.map((item)=>({
+            product: item,
+            article: item.article,
+            name: item.name,
+            ean_13: item.ean_13,
+            ozon_name: item.ozon_name,
+            name_1c: item.name_1c,
+            wb_name: item.wb_name,
+            ozon_article: item.ozon_article,
+            wb_article: item.wb_article,
+            ym_article: item.ym_article,
+            cost: item.cost,
+            recommended_price: item.recommended_price
+          })));
+        })
+        .catch(err=> err);
   }
 
-  console.log(dillerProduct);
+  function handleMark (product) {
+    setDillerProduct(product);
+    api.getRecommendedProducts(product.id)
+      .then((data)=> {
+        setProseptProduct(data.map((item)=>({
+          product: item,
+          article: item.article,
+          name: item.name,
+          ean_13: item.ean_13,
+          ozon_name: item.ozon_name,
+          name_1c: item.name_1c,
+          wb_name: item.wb_name,
+          ozon_article: item.ozon_article,
+          wb_article: item.wb_article,
+          ym_article: item.ym_article,
+          cost: item.cost,
+          recommended_price: item.recommended_price
+        })));
+      })
+      .catch(err=> err);
+    navigate("/marking");
+  }
+
+  console.log(proseptProduct);
   return (
     <Context.Provider value={null}>
     <div className="app">
@@ -88,6 +142,8 @@ function App () {
             <Marking
               onCardClick={handleCardClick}
               dillerProduct={dillerProduct}
+              productsList={proseptProduct}
+              onShowAllProducts={handleShowAllProducts}
             />
             <Footer />
           </>
