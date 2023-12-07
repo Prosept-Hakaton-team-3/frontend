@@ -115,7 +115,10 @@ function App () {
     navigate("/marking");
   }
 
-  console.log(proseptProduct);
+  function handleConfirmMatch () {
+
+  }
+
   return (
     <Context.Provider value={null}>
     <div className="app">
@@ -144,6 +147,7 @@ function App () {
               dillerProduct={dillerProduct}
               productsList={proseptProduct}
               onShowAllProducts={handleShowAllProducts}
+              onConfirm={handleConfirmMatch}
             />
             <Footer />
           </>

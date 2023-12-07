@@ -41,6 +41,7 @@ export function Marking (props) {
             productsList={props.productsList}
             onCardClick={props.onCardClick}
             onShowAllProducts={props.onShowAllProducts}
+            onConfirm={props.onConfirm}
             />
         </section>
   );

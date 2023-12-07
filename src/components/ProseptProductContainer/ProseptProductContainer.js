@@ -8,6 +8,11 @@ export function ProseptProductContainer (props) {
     props.onShowAllProducts();
   }
 
+  function confirmMatch (evt) {
+    evt.preventDefault();
+    props.onConfirm();
+  }
+
   return (
         <form className="prosept-product-container">
             <div className="prosept-product-container__wrap">
@@ -24,7 +29,7 @@ export function ProseptProductContainer (props) {
             }
             </div>
             <div className="prosept-product-container__buttons">
-                <button className="prosept-product-container__button">Подходит</button>
+                <button type="submit" onClick={confirmMatch} className="prosept-product-container__button">Подходит</button>
                 <button type="submit" onClick={handleShowAllProducts} className="prosept-product-container__button">Разметить вручную</button>
                 <button className="prosept-product-container__button">Отложить (удалить товар)</button>
                 <button className="prosept-product-container__button">Перейти к следующему товару</button>
