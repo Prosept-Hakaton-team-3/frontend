@@ -11,16 +11,21 @@ import { ProseptProductPopup } from "../ProseptProductPopup/ProseptProductPopup"
 import api from "../../utils/Api";
 import Context from "../../context/Context";
 
-function App () {
+function App() {
   const [isMenuPopupOpen, showMenuPopup] = useState(false);
   const [selectedCard, showSelectedCard] = useState(null);
   const [dillerProduct, setDillerProduct] = useState(null);
   const [dillerProductForMatch, setDillerProductForMatch] = useState(null);
   const [proseptProduct, setProseptProduct] = useState(null);
   const [proseptProductMatch, setProseptProductMacth] = useState(null);
+  const [statistics, setStatistics] = useState({});
+  const [yes, setYes] = useState(0);
+  const [no, setNo] = useState(0);
+  // const [ putAside, setPutAside] = useState(0);
+
   const navigate = useNavigate();
 
-  useEffect(()=> {
+  useEffect(() => {
     api.getProducts()
       .then((data)=>{
         console.log(data.results[0]);
@@ -41,16 +46,17 @@ function App () {
       .catch(err=> err);
   },[]);
 
-  function handleMenuClick () {
+  function handleMenuClick() {
     showMenuPopup(true);
   }
 
-  function closePopup () {
+  function closePopup() {
     showMenuPopup(false);
+
     showSelectedCard(null);
   }
 
-  function handleCardClick (product) {
+  function handleCardClick(product) {
     showSelectedCard(product);
   }
 
@@ -76,11 +82,11 @@ function App () {
         .catch(err=> err);
   }
 
-  function handleMark (product) {
+  function handleMark(product) {
     setDillerProductForMatch(product);
     api.getRecommendedProducts(product.id)
-      .then((data)=> {
-        setProseptProduct(data.map((item)=>({
+      .then((data) => {
+        setProseptProduct(data.map((item) => ({
           product: item,
           article: item.article,
           name: item.name,
@@ -95,7 +101,7 @@ function App () {
           recommended_price: item.recommended_price,
         })));
       })
-      .catch(err=> err);
+      .catch(err => err);
     navigate("/marking");
   }
 
@@ -145,13 +151,13 @@ function App () {
           recommended_price: item.recommended_price
         })));
       })
-      .catch(err=> err);
+      .catch(err => err);
   }
 
-  function handleDeleteProduct () {
+  function handleDeleteProduct() {
     api.deleteProductsId(dillerProductForMatch.id)
-    .then((res) => res)
-    .catch(err => err);
+      .then((res) => res)
+      .catch(err => err);
     handleGoNext();
     api.getProducts()
     .then((data)=>{
@@ -172,65 +178,96 @@ function App () {
     .catch(err=> err);
   }
 
-  return (
-    <Context.Provider value={null}>
-    <div className="app">
-      <Routes>
-        <Route
-        exact
-        path="/"
-        element = {
-          <>
-            <Header onMenu={handleMenuClick}/>
-            <Main onMark={handleMark}
-                  dillerProduct={dillerProduct}
-            />
-            <Footer />
-          </>
-        }
-        />
-        <Route
-        exact
-        path="/marking"
-        element = {
-          <>
-            <Header onMenu={handleMenuClick}/>
-            <Marking
-              onCardClick={handleCardClick}
-              dillerProduct={dillerProductForMatch}
-              productsList={proseptProduct}
-              onShowAllProducts={handleShowAllProducts}
-              onConfirm={handleConfirmMatch}
-              onNext={handleGoNext}
-              onDelete={handleDeleteProduct}
-              onMatch={handleMatch}
-            />
-            <Footer />
-          </>
-        }
-        />
-        <Route
-        exact
-        path="/statistics"
-        element = {
-          <>
-            <Header onMenu={handleMenuClick}/>
-            <Statistics />
-            <Footer />
-          </>
-        }
-        />
-      </Routes>
+  useEffect(() => {
+    api.getStatistics()
+    .then((data) => {
+      setStatistics({
+        total: data.total,
+        marked: data.marked,
+        unmarked: data.unmarked,
+      });
+    })
+    .catch(err => err);
 
-      <MenuPopup
-        isOpen={isMenuPopupOpen}
-        onClose={closePopup}
-      />
-      <ProseptProductPopup
-        product={selectedCard}
-        onClose={closePopup}
-      />
-    </div>
+  }, []);
+
+  const yesBtn =  document.querySelector("#yes");
+  const noBtn =  document.querySelector("#no");
+
+  yesBtn?.addEventListener("click", ()=> {
+      setYes(yes +1);
+  });
+  noBtn?.addEventListener("click", ()=> {
+    setNo(no +1);
+});
+
+  return (
+    <Context.Provider >
+      <div className="app">
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <>
+                <Header onMenu={handleMenuClick}
+              />
+                <Main onMark={handleMark}
+                  dillerProduct={dillerProduct}
+                />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            exact
+            path="/marking"
+            element={
+              <>
+                <Header onMenu={handleMenuClick} />
+                <Marking
+                  onCardClick={handleCardClick}
+                  dillerProduct={dillerProductForMatch}
+                  productsList={proseptProduct}
+                  onShowAllProducts={handleShowAllProducts}
+                  onConfirm={handleConfirmMatch}
+                  onNext={handleGoNext}
+                  onDelete={handleDeleteProduct}
+              onMatch={handleMatch}
+                  yes={yes}
+                  no={no}
+                />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            exact
+            path="/statistics"
+            element={
+              <>
+                <Header onMenu={handleMenuClick} />
+                <Statistics
+                statistics={statistics}
+                yes={yes}
+                no={no}
+               />
+                <Footer />
+              </>
+            }
+          />
+        </Routes>
+
+        <MenuPopup
+          isOpen={isMenuPopupOpen}
+          onClose={closePopup}
+
+        />
+        <ProseptProductPopup
+          product={selectedCard}
+          onClose={closePopup}
+        />
+      </div>
     </Context.Provider>
   );
 }
