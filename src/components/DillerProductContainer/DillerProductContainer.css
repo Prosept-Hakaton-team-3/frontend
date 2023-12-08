@@ -1,0 +1,15 @@
+.diller-product-container {
+    padding: 20px 0;
+    width: 1140px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.diller-product-container_marking {
+    width: 100%;
+}
