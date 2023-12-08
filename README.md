@@ -2,7 +2,7 @@
 Alexander Belyakov
 Elena Padun
 
-Ссылка на приложение: `ссылка`
+Ссылка на приложение: `http://81.31.246.159`
 
 Билд
 Команда `npm run build` - Сборка проекта
@@ -11,8 +11,8 @@ Elena Padun
 Стек технологий: `React`
 
 В прокте использовались:
-React: `https://react.dev`
-Шрифт:"`https://fonts.google.com/specimen/Inter`
-Логотоп и Кнопка меню:`https://prosept.ru`
+React: `https://react.dev`<br>
+Шрифт:"`https://fonts.google.com/specimen/Inter`<br>
+Логотоп и Кнопка меню:`https://prosept.ru`<br>
 Все остальные кнопки были найдены через поиск с помощью Google
 

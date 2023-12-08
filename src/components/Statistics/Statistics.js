@@ -1,16 +1,20 @@
 import React from "react";
 import "./Statistics.css";
 
-export function Statistics () {
+
+export function Statistics ({statistics}) {
+
+
+
   return (
         <section className="statistics">
             <h1 className="statistics__header">Статистика</h1>
             <article className="statistics__wrap">
                 <article className="statistics__chunk">
                     <h2>Статистика по базе данных</h2>
-                    <p>Всего товаров доступных для разметки:</p>
-                    <p>Товаров размечено:</p>
-                    <p>Товаров НЕ размечено:</p>
+                    <p>Всего товаров доступных для разметки:{statistics.total}</p>
+                    <p>Товаров размечено:{statistics.marked}</p>
+                    <p>Товаров НЕ размечено:{statistics.unmarked}</p>
                 </article>
                 <article className="statistics__chunk">
                     <h2>Статистика по текущему сеансу</h2>

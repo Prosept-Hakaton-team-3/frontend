@@ -67,6 +67,12 @@ class Api {
     })
       .then(this._checkResponse);
   }
+  getStatistics () {
+    return fetch(`${this.address}/products/stats`,{
+      headers: { "Content-Type": "application/json" }
+    })
+    .then(this._checkResponse);
+  }
 }
 const MainApi = new Api({
   address: MAIN_API
