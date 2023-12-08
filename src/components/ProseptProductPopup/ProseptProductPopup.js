@@ -18,10 +18,10 @@ export function ProseptProductPopup (props) {
                   <p className="prosept-product-popup__key">Название товара:</p>
                   <p className="prosept-product-popup__value">{props.product?.name}</p>
                 </div>
-                {/* <div className="prosept-product-popup__field">
+                <div className="prosept-product-popup__field">
                   <p className="prosept-product-popup__key">Стоимость:</p>
                   <p className="prosept-product-popup__value">{props.product?.cost}</p>
-                </div> */}
+                </div>
                 {/* <div className="prosept-product-popup__field">
                   <p className="prosept-product-popup__key">Рекомендованная минимальная цена:</p>
                   <p className="prosept-product-popup__value">{props.product?.name}</p>
@@ -34,10 +34,10 @@ export function ProseptProductPopup (props) {
                   <p className="prosept-product-popup__key">Категория товара:</p>
                   <p className="prosept-product-popup__value">{props.product?.name}</p>
                 </div> */}
-                {/* <div className="prosept-product-popup__field">
+                <div className="prosept-product-popup__field">
                   <p className="prosept-product-popup__key">Название товара на Озоне:</p>
-                  <p className="prosept-product-popup__value">{props.product?.name}</p>
-                </div> */}
+                  <p className="prosept-product-popup__value">{props.product?.ozon_name}</p>
+                </div>
                 <div className="prosept-product-popup__field">
                   <p className="prosept-product-popup__key">Название товара в 1С:</p>
                   <p className="prosept-product-popup__value">{props.product?.name_1c}</p>
