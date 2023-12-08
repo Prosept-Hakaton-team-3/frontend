@@ -25,6 +25,8 @@ export function DillerProductContainer (props) {
             date={props?.dillerProductList?.date}
             vendorCode={props?.dillerProductList?.vendorCode}
             status={props?.dillerProductList?.status}
+            dealer={props?.dillerProductList?.product.dealer}
+            twin={props?.dillerProductList?.twin}
             />}
         </section>
   );
