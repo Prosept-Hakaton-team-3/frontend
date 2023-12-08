@@ -21,6 +21,7 @@ export function ProseptProductContainer (props) {
     props.onDelete();
   }
 
+
   return (
         <form className="prosept-product-container">
             <div className="prosept-product-container__wrap">
@@ -37,9 +38,9 @@ export function ProseptProductContainer (props) {
             }
             </div>
             <div className="prosept-product-container__buttons">
-                <button type="submit" onClick={confirmMatch} className="prosept-product-container__button">Подходит</button>
+                <button type="submit" onClick={confirmMatch} className="prosept-product-container__button" id='yes'>Подходит</button>
                 <button type="submit" onClick={handleShowAllProducts} className="prosept-product-container__button">Разметить вручную</button>
-                <button type="button" onClick={deleteProduct} className="prosept-product-container__button">Отложить (удалить товар)</button>
+                <button type="button" onClick={deleteProduct} className="prosept-product-container__button" id='no'>Отложить (удалить товар)</button>
                 <button type="button" onClick={goNext} className="prosept-product-container__button">Перейти к следующему товару</button>
             </div>
         </form>

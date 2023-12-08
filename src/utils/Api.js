@@ -13,7 +13,7 @@ class Api {
   }
 //
   postMatches ({ product_id, dealer_id, key }) {
-    return fetch(`${this.address}/matches`, {
+    return fetch(`${this.address}/matches/`, {
       method: "POST",
       headers: {
         Accept: "application/json",

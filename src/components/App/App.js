@@ -18,6 +18,9 @@ function App() {
   const [dillerProductForMatch, setDillerProductForMatch] = useState(null);
   const [proseptProduct, setProseptProduct] = useState(null);
   const [statistics, setStatistics] = useState({});
+  const [yes, setYes] = useState(0);
+  const [no, setNo] = useState(0);
+  // const [ putAside, setPutAside] = useState(0);
 
   const navigate = useNavigate();
 
@@ -198,10 +201,18 @@ function App() {
 
   }, []);
 
+  const yesBtn =  document.querySelector("#yes");
+  const noBtn =  document.querySelector("#no");
 
+  yesBtn?.addEventListener("click", ()=> {
+      setYes(yes +1);
+  });
+  noBtn?.addEventListener("click", ()=> {
+    setNo(no +1);
+});
 
   return (
-    <Context.Provider value={null}>
+    <Context.Provider >
       <div className="app">
         <Routes>
           <Route
@@ -232,6 +243,8 @@ function App() {
                   onConfirm={handleConfirmMatch}
                   onNext={handleGoNext}
                   onDelete={handleDeleteProduct}
+                  yes={yes}
+                  no={no}
                 />
                 <Footer />
               </>
@@ -245,6 +258,8 @@ function App() {
                 <Header onMenu={handleMenuClick} />
                 <Statistics
                 statistics={statistics}
+                yes={yes}
+                no={no}
                />
                 <Footer />
               </>
