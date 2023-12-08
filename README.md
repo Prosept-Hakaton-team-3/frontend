@@ -2,7 +2,7 @@
 - Alexander Belyakov
 - Elena Padun
 
-## [Ссылка на приложение]:(http://81.31.246.159)
+## Ссылка на приложение:(http://81.31.246.159)
 
 ### Билд
   Команда `npm install` - Устанавливает зависимости
@@ -13,8 +13,8 @@
 Стек технологий: `React`, `React Hooks`, `React Router`
 
 В прокте использовались:
-[React]:(https://react.dev)<br>
-[Шрифт]:(https://fonts.google.com/specimen/Inter)<br>
-[Логотоп и Кнопка меню]:(https://prosept.ru)<br>
+React:(https://react.dev)<br>
+Шрифт:(https://fonts.google.com/specimen/Inter)<br>
+Логотоп и Кнопка меню:(https://prosept.ru)<br>
 Все остальные кнопки были найдены через поиск с помощью Google
 
