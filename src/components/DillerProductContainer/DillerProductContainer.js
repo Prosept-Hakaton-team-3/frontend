@@ -18,6 +18,7 @@ export function DillerProductContainer (props) {
                     status={product.status}
                     product={product}
                     onMark={props.onMark}
+                    onCalc={props.onCalc}
                 />
            ))}
             {(location.pathname === "/marking") && <DillerProduct

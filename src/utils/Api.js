@@ -33,8 +33,8 @@ class Api {
       .then(this._checkResponse);
   }
 
-  getRecommendedProducts (id) {
-    return fetch(`${this.address}/products/${id}/recommendations`, {
+  getRecommendedProducts (id, quantity) {
+    return fetch(`${this.address}/products/${id}/recommendations/?quantity=${quantity}`, {
       headers: {
         "Content-Type": "application/json"
       }
