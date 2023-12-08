@@ -12,7 +12,7 @@
 
 Стек технологий: `React`, `React Hooks`, `React Router`, `Docker`
 
-В прокте использовались:
+В прокте использовались:<br>
 React: https://react.dev<br>
 Шрифт: https://fonts.google.com/specimen/Inter<br>
 Логотоп и Кнопка меню: https://prosept.ru <br>
