@@ -11,7 +11,7 @@ class Api {
     }
     return Promise.reject(new Error(`Ошибка ${res.status}`));
   }
-//
+
   postMatches ({ product_id, dealer_id, key }) {
     return fetch(`${this.address}/matches/`, {
       method: "POST",

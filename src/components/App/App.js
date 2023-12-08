@@ -22,30 +22,30 @@ function App() {
   const [productNumber, setProductNumber] = useState();
   const [yes, setYes] = useState(0);
   const [no, setNo] = useState(0);
-  // const [ putAside, setPutAside] = useState(0);
+  const [ putAside, setPutAside] = useState(0);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     api.getProducts()
       .then((data)=>{
-        console.log(data.results[0]);
         setDillerProduct(data.results.map((item)=>({
-        product: item,
-        date: item.date,
-        dealer: item.dealer.name,
-        dealer_id: item.dealer.id,
-        id: item.id,
-        key: item.product_key,
-        name: item.product_name,
-        price: item.price,
-        url: item.product_url,
-        status: item.status,
-        twin: item.matches[0]?.product?.name
-      })));
+          product: item,
+          date: item.date,
+          dealer: item.dealer.name,
+          dealer_id: item.dealer.id,
+          id: item.id,
+          key: item.product_key,
+          name: item.product_name,
+          price: item.price,
+          url: item.product_url,
+          status: item.status,
+          twin: item.matches[0]?.product?.name
+        }))
+        );
       })
-      .catch(err=> err);
-  },[]);
+      .catch(err => err);
+  }, []);
 
   function handleMenuClick() {
     showMenuPopup(true);
@@ -67,24 +67,24 @@ function App() {
 
   function handleShowAllProducts() {
     api.getOwnProducts()
-        .then((data)=> {
-          console.log(data.results[0]);
-          setProseptProduct(data.results.map((item)=>({
-            product: item,
-            article: item.article,
-            name: item.name,
-            ean_13: item.ean_13,
-            ozon_name: item.ozon_name,
-            name_1c: item.name_1c,
-            wb_name: item.wb_name,
-            ozon_article: item.ozon_article,
-            wb_article: item.wb_article,
-            ym_article: item.ym_article,
-            cost: item.cost,
-            recommended_price: item.recommended_price
-          })));
-        })
-        .catch(err=> err);
+      .then((data)=> {
+        setProseptProduct(data.results.map((item)=>({
+          product: item,
+          id: item.id,
+          article: item.article,
+          name: item.name,
+          ean_13: item.ean_13,
+          ozon_name: item.ozon_name,
+          name_1c: item.name_1c,
+          wb_name: item.wb_name,
+          ozon_article: item.ozon_article,
+          wb_article: item.wb_article,
+          ym_article: item.ym_article,
+          cost: item.cost,
+          recommended_price: item.recommended_price
+        })));
+      })
+      .catch(err => err);
   }
 
   function handleMark(product) {
@@ -111,34 +111,34 @@ function App() {
   }
 
   function handleMatch (product) {
-    setProseptProductMacth(product.product); // prosept product id
+    setProseptProductMacth(product.product);
   }
 
   function handleConfirmMatch () {
-    console.log(dillerProductForMatch.dealer_id);
+
     api.postMatches({product_id:proseptProductMatch.id, dealer_id:dillerProductForMatch.dealer_id, key:dillerProductForMatch.key})
-    .then(data => console.log(data))
-    .catch(err => err);
+      .then(data => data)
+      .catch(err => err);
   }
 
   function handleGoNext () {
     api.getProductsId(dillerProductForMatch.id+1)
-    .then((item)=>{
-      setDillerProductForMatch({
-      product: item,
-      date: item.date,
-      dealer: item.dealer.name,
-      dealer_id: item.dealer.id,
-      id: item.id,
-      key: item.product_key,
-      name: item.product_name,
-      price: item.price,
-      url: item.product_url,
-      status: item.status,
-      twin: item.matches[0]?.product?.name
-    });
-    })
-    .catch(err=> err);
+      .then((item)=>{
+        setDillerProductForMatch({
+          product: item,
+          date: item.date,
+          dealer: item.dealer.name,
+          dealer_id: item.dealer.id,
+          id: item.id,
+          key: item.product_key,
+          name: item.product_name,
+          price: item.price,
+          url: item.product_url,
+          status: item.status,
+          twin: item.matches[0]?.product?.name
+        });
+      })
+      .catch(err=> err);
     api.getRecommendedProducts(dillerProductForMatch.id+1)
       .then((data)=> {
         setProseptProduct(data.map((item)=>({
@@ -165,49 +165,54 @@ function App() {
       .catch(err => err);
     handleGoNext();
     api.getProducts()
-    .then((data)=>{
-      setDillerProduct(data.results.map((item)=>({
-      product: item,
-      date: item.date,
-      dealer: item.dealer.name,
-      dealer_id: item.dealer.id,
-      id: item.id,
-      key: item.product_key,
-      name: item.product_name,
-      price: item.price,
-      url: item.product_url,
-      status: item.status,
-      twin: item.matches[0]?.product?.name
-    })));
-    })
-    .catch(err=> err);
+      .then((data)=>{
+        setDillerProduct(data.results.map((item)=>({
+          product: item,
+          date: item.date,
+          dealer: item.dealer.name,
+          dealer_id: item.dealer.id,
+          id: item.id,
+          key: item.product_key,
+          name: item.product_name,
+          price: item.price,
+          url: item.product_url,
+          status: item.status,
+          twin: item.matches[0]?.product?.name
+        })));
+      })
+      .catch(err => err);
   }
 
   useEffect(() => {
     api.getStatistics()
-    .then((data) => {
-      setStatistics({
-        total: data.total,
-        marked: data.marked,
-        unmarked: data.unmarked,
-      });
-    })
-    .catch(err => err);
+      .then((data) => {
+        setStatistics({
+          total: data.total,
+          marked: data.marked,
+          unmarked: data.unmarked,
+        });
+      })
+      .catch(err => err);
 
   }, []);
 
-  const yesBtn =  document.querySelector("#yes");
-  const noBtn =  document.querySelector("#no");
+  const yesBtn = document.querySelector("#yes");
+  const noBtn = document.querySelector("#no");
+  const putAsside = document.querySelector("#putAside");
 
-  yesBtn?.addEventListener("click", ()=> {
-      setYes(yes +1);
+  yesBtn?.addEventListener("click", () => {
+    setYes(yes + 1);
   });
-  noBtn?.addEventListener("click", ()=> {
-    setNo(no +1);
-});
+  noBtn?.addEventListener("click", () => {
+    setNo(no + 1);
+  });
+  putAsside?.addEventListener("click", () => {
+    setPutAside(no + 1);
+  });
+
 
   return (
-    <Context.Provider >
+    <Context.Provider value={""}>
       <div className="app">
         <Routes>
           <Route
@@ -216,7 +221,7 @@ function App() {
             element={
               <>
                 <Header onMenu={handleMenuClick}
-              />
+                />
                 <Main onMark={handleMark}
                   dillerProduct={dillerProduct}
                   onCalc={handleCalc}
@@ -240,8 +245,6 @@ function App() {
                   onNext={handleGoNext}
                   onDelete={handleDeleteProduct}
                   onMatch={handleMatch}
-                  yes={yes}
-                  no={no}
                 />
                 <Footer />
               </>
@@ -254,10 +257,11 @@ function App() {
               <>
                 <Header onMenu={handleMenuClick} />
                 <Statistics
-                statistics={statistics}
-                yes={yes}
-                no={no}
-               />
+                  statistics={statistics}
+                  yes={yes}
+                  no={no}
+                  putAside={putAside}
+                />
                 <Footer />
               </>
             }

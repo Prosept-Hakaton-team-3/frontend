@@ -41,8 +41,8 @@ export function ProseptProductContainer (props) {
             <div className="prosept-product-container__buttons">
                 <button type="submit" onClick={confirmMatch} className="prosept-product-container__button" id='yes'>Подходит</button>
                 <button type="submit" onClick={handleShowAllProducts} className="prosept-product-container__button">Разметить вручную</button>
-                <button type="button" onClick={deleteProduct} className="prosept-product-container__button" id='no'>Отложить (удалить товар)</button>
-                <button type="button" onClick={goNext} className="prosept-product-container__button">Перейти к следующему товару</button>
+                <button type="button" onClick={deleteProduct} className="prosept-product-container__button" id='no'>Не подходит</button>
+                <button type="button" onClick={goNext} className="prosept-product-container__button"id="putAside">Отложить (Перейти к следующему товару)</button>
             </div>
         </form>
   );

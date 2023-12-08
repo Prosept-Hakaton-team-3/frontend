@@ -2,7 +2,7 @@ import React from "react";
 import "./Statistics.css";
 
 
-export function Statistics ({statistics, yes, no}) {
+export function Statistics ({statistics, yes, no, putAside}) {
 
 
 
@@ -22,7 +22,7 @@ export function Statistics ({statistics, yes, no}) {
                     <p>Товаров проверено:{yes}</p>
                     <p>Товаров не проверено:{statistics.unmarked - yes} </p>
                     <p>Товаров сопоставлено: {statistics.marked}</p>
-                    <p>Сколько отложено:</p>
+                    <p>Сколько отложено: {putAside}</p>
                     <p>Сколько товаров точно не подошло: {no}</p>
                 </article>
             </article>
