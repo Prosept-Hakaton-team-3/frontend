@@ -17,6 +17,7 @@ export function Marking (props) {
             onNext={props.onNext}
             onDelete={props.onDelete}
             onMatch={props.onMatch}
+          
             />
         </section>
   );
