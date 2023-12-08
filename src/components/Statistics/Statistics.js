@@ -18,7 +18,7 @@ export function Statistics ({statistics, yes, no}) {
                 </article>
                 <article className="statistics__chunk">
                     <h2>Статистика по текущему сеансу</h2>
-                    <p>Товаров НЕ размечено: {statistics.unmarked}</p>
+                    <p>Товаров для сопоставления: {statistics.unmarked}</p>
                     <p>Товаров проверено:{yes}</p>
                     <p>Товаров не проверено:{statistics.unmarked - yes} </p>
                     <p>Товаров сопоставлено: {statistics.marked}</p>
