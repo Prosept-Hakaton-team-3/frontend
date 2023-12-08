@@ -23,6 +23,7 @@
 }
 
 .diller-product__form {
+    margin-top: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,4 +46,26 @@
     width: 40px;
     height: 40px;
     border: none;
+}
+
+.diller-product__subtext {
+  margin: 0;
+  font-size: 13px;
+  width: 30px;
+  visibility:hidden
+}
+
+.diller-product__submit-button:hover + .diller-product__subtext {
+  visibility: visible;
+}
+
+.diller-product__subnumb {
+  font-size: 10px;
+  width: 50px;
+  visibility:hidden;
+  margin:0
+}
+
+.diller-product__input:focus + .diller-product__subnumb {
+  visibility: visible;
 }

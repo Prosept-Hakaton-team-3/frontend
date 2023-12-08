@@ -17,11 +17,13 @@ function App () {
   const [dillerProduct, setDillerProduct] = useState(null);
   const [dillerProductForMatch, setDillerProductForMatch] = useState(null);
   const [proseptProduct, setProseptProduct] = useState(null);
+  const [proseptProductMatch, setProseptProductMacth] = useState(null);
   const navigate = useNavigate();
 
   useEffect(()=> {
     api.getProducts()
       .then((data)=>{
+        console.log(data.results[0]);
         setDillerProduct(data.results.map((item)=>({
         product: item,
         date: item.date,
@@ -32,32 +34,12 @@ function App () {
         name: item.product_name,
         price: item.price,
         url: item.product_url,
+        status: item.status,
+        twin: item.matches[0]?.product?.name
       })));
       })
       .catch(err=> err);
   },[]);
-
-  // useEffect(()=>{
-  //   api.getOwnProducts()
-  //     .then((data)=> {
-  //       setProseptProduct(data.results.map((item)=>({
-  //         product: item,
-  //         article: item.article,
-  //         name: item.name,
-  //         ean_13: item.ean_13,
-  //         ozon_name: item.ozon_name,
-  //         name_1c: item.name_1c,
-  //         wb_name: item.wb_name,
-  //         ozon_article: item.ozon_article,
-  //         wb_article: item.wb_article,
-  //         ym_article: item.ym_article,
-  //         cost: item.cost,
-  //         recommended_price: item.recommended_price
-  //       })));
-  //     })
-  //     .catch(err=> err);
-  // },[]);
-
 
   function handleMenuClick () {
     showMenuPopup(true);
@@ -75,6 +57,7 @@ function App () {
   function handleShowAllProducts() {
     api.getOwnProducts()
         .then((data)=> {
+          console.log(data.results[0]);
           setProseptProduct(data.results.map((item)=>({
             product: item,
             article: item.article,
@@ -109,15 +92,22 @@ function App () {
           wb_article: item.wb_article,
           ym_article: item.ym_article,
           cost: item.cost,
-          recommended_price: item.recommended_price
+          recommended_price: item.recommended_price,
         })));
       })
       .catch(err=> err);
     navigate("/marking");
   }
 
-  function handleConfirmMatch () {
+  function handleMatch (product) {
+    setProseptProductMacth(product.product); // prosept product id
+  }
 
+  function handleConfirmMatch () {
+    console.log(dillerProductForMatch.dealer_id);
+    api.postMatches({product_id:proseptProductMatch.id, dealer_id:dillerProductForMatch.dealer_id, key:dillerProductForMatch.key})
+    .then(data => console.log(data))
+    .catch(err => err);
   }
 
   function handleGoNext () {
@@ -133,6 +123,8 @@ function App () {
       name: item.product_name,
       price: item.price,
       url: item.product_url,
+      status: item.status,
+      twin: item.matches[0]?.product?.name
     });
     })
     .catch(err=> err);
@@ -173,6 +165,8 @@ function App () {
       name: item.product_name,
       price: item.price,
       url: item.product_url,
+      status: item.status,
+      twin: item.matches[0]?.product?.name
     })));
     })
     .catch(err=> err);
@@ -209,6 +203,7 @@ function App () {
               onConfirm={handleConfirmMatch}
               onNext={handleGoNext}
               onDelete={handleDeleteProduct}
+              onMatch={handleMatch}
             />
             <Footer />
           </>

@@ -10,7 +10,7 @@ export function ProseptProductContainer (props) {
 
   function confirmMatch (evt) {
     evt.preventDefault();
-    props.onConfirm();
+    props.onConfirm(props.proseptMatch);
   }
 
   function goNext() {
@@ -32,6 +32,7 @@ export function ProseptProductContainer (props) {
                     vendorCode={product?.vendorCode}
                     status={product.status}
                     onCardClick={props.onCardClick}
+                    onMatch={props.onMatch}
                 />
             ))
             }
