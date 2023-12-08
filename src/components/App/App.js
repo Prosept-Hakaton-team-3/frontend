@@ -19,6 +19,7 @@ function App() {
   const [proseptProduct, setProseptProduct] = useState(null);
   const [proseptProductMatch, setProseptProductMacth] = useState(null);
   const [statistics, setStatistics] = useState({});
+  const [productNumber, setProductNumber] = useState();
   const [yes, setYes] = useState(0);
   const [no, setNo] = useState(0);
   const [ putAside, setPutAside] = useState(0);
@@ -60,6 +61,10 @@ function App() {
     showSelectedCard(product);
   }
 
+  function handleCalc (numb) {
+    setProductNumber(numb);
+  }
+
   function handleShowAllProducts() {
     api.getOwnProducts()
       .then((data)=> {
@@ -84,7 +89,7 @@ function App() {
 
   function handleMark(product) {
     setDillerProductForMatch(product);
-    api.getRecommendedProducts(product.id)
+    api.getRecommendedProducts(product.id, productNumber)
       .then((data) => {
         setProseptProduct(data.map((item) => ({
           product: item,
@@ -219,6 +224,7 @@ function App() {
                 />
                 <Main onMark={handleMark}
                   dillerProduct={dillerProduct}
+                  onCalc={handleCalc}
                 />
                 <Footer />
               </>

@@ -10,6 +10,7 @@ export function Main (props) {
             <DillerProductContainer
             dillerProductList={props.dillerProduct}
             onMark={props.onMark}
+            onCalc={props.onCalc}
             />
         </main>
   );

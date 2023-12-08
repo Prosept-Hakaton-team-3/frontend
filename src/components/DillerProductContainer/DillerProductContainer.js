@@ -18,6 +18,7 @@ export function DillerProductContainer (props) {
                     status={product.status}
                     product={product}
                     onMark={props.onMark}
+                    onCalc={props.onCalc}
                 />
            ))}
             {(location.pathname === "/marking") && <DillerProduct
@@ -25,6 +26,8 @@ export function DillerProductContainer (props) {
             date={props?.dillerProductList?.date}
             vendorCode={props?.dillerProductList?.vendorCode}
             status={props?.dillerProductList?.status}
+            dealer={props?.dillerProductList?.product.dealer}
+            twin={props?.dillerProductList?.twin}
             />}
         </section>
   );

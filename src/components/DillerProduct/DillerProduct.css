@@ -16,14 +16,17 @@
 .diller-product__key {
     color: black;
     text-decoration: underline;
+    width:100px
 }
 
 .diller-product__value {
     color: black;
+    width: 100px
 }
 
 .diller-product__form {
     margin-top: 15px;
+    padding-left:50px;
     display: flex;
     flex-direction: column;
     align-items: center;
