@@ -2,7 +2,6 @@
 - Alexander Belyakov
 - Elena Padun
 
-## Ссылка на приложение: http://81.31.246.159
 
 ### Билд
   Команда `npm install` - Устанавливает зависимости<br>
